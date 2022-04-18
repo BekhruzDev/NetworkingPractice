@@ -5,8 +5,7 @@ import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.bekhruz.networkingpractice.R
-import com.bekhruz.networkingpractice.network.Photo
+import com.bekhruz.networkingpractice.network.Hit
 
 @BindingAdapter("loadImage")
 fun bindImage(imgView: ImageView, imgUrl: String?){
@@ -17,7 +16,7 @@ fun bindImage(imgView: ImageView, imgUrl: String?){
 }
 
 @BindingAdapter("adapterData")
-fun bindRecyclerview(recyclerView: RecyclerView, dataList: List<Photo>?) {
+fun bindRecyclerview(recyclerView: RecyclerView, dataList: List<Hit>?) {
     val adapter = recyclerView.adapter as PhotoGridAdapter
     adapter.submitList(dataList)
 }

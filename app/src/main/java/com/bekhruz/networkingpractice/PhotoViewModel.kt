@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bekhruz.networkingpractice.network.Images
-import com.bekhruz.networkingpractice.network.Photo
 import com.bekhruz.networkingpractice.network.PhotosApi
 import kotlinx.coroutines.launch
 
