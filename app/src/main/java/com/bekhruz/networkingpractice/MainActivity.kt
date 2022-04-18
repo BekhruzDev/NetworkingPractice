@@ -2,6 +2,7 @@ package com.bekhruz.networkingpractice
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
@@ -23,5 +24,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView = binding.photosRecyclerview
         recyclerView.adapter = PhotoGridAdapter()
         recyclerView.setHasFixedSize(true)
+        Log.d("Response", viewModel.photos.value?.total.toString())
+
     }
 }
