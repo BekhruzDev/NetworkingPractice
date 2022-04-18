@@ -5,7 +5,6 @@
     tools:context=".MainActivity">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.bekhruz.networkingpractice.PhotoViewModel" />
@@ -19,6 +18,7 @@
             android:id="@+id/photos_recyclerview"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:padding="8dp"
             android:clipToPadding="false"
             app:adapterData="@{viewModel.photos.hits}"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

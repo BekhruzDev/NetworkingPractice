@@ -17,6 +17,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface PhotoApiService{
+    //TODO: USE @QUERIES
 @GET("?key=26791382-401008e990a0a45ca9b7993ec&q=nature&image_type=photo&pretty=true")
 suspend fun getPhotos():Images
 }
