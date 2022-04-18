@@ -5,19 +5,20 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bekhruz.networkingpractice.R
 import com.bekhruz.networkingpractice.databinding.ItemLayoutBinding
 import com.bekhruz.networkingpractice.network.Hit
+import com.bumptech.glide.Glide
 
 class PhotoGridAdapter : ListAdapter<Hit, PhotoGridAdapter.PhotoViewHolder>(DiffCallBack) {
 
     class PhotoViewHolder(private val binding: ItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        //here we need to initialize the binding expression 'photo'
-        //with the element from list of photos
         fun bind(photoElement: Hit) {
-            binding.hit = photoElement
-            //execute the update immediately
-            binding.executePendingBindings()
+            Glide.with(itemView.context).load(photoElement.webformatURL).into(binding.itemImageview)
+            binding.likesTextview.text =
+                itemView.context.getString(R.string.number_of_likes, photoElement.likes)
+            binding.imageTagsTextview.text = photoElement.tags
         }
 
     }
@@ -33,7 +34,7 @@ class PhotoGridAdapter : ListAdapter<Hit, PhotoGridAdapter.PhotoViewHolder>(Diff
         holder.bind(elementOfPhotos)
     }
 
-    companion object DiffCallBack:DiffUtil.ItemCallback<Hit>() {
+    companion object DiffCallBack : DiffUtil.ItemCallback<Hit>() {
         override fun areItemsTheSame(oldItem: Hit, newItem: Hit): Boolean {
             return oldItem.id == newItem.id
         }
