@@ -17,7 +17,7 @@ class PhotoViewModel: ViewModel() {
     }
     private fun getPictures(){
         viewModelScope.launch{
-            _photos.value = PhotosApi.retrofitService.getPhotos()
+            _photos.postValue(PhotosApi.retrofitService.getPhotos())
         }
     }
 }
