@@ -22,7 +22,9 @@ class MainActivity : AppCompatActivity() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         recyclerView = binding.photosRecyclerview
-        recyclerView.adapter = PhotoGridAdapter()
+        recyclerView.layoutManager = GridLayoutManager(this, 2)
+        val adapter = PhotoGridAdapter()
+        recyclerView.adapter = adapter
         recyclerView.setHasFixedSize(true)
         Log.d("Response", viewModel.photos.value?.total.toString())
 
