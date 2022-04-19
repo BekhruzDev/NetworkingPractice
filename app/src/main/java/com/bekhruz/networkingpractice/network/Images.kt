@@ -1,7 +1,7 @@
 package com.bekhruz.networkingpractice.network
 
 data class Images(
-    val hits: List<Hit>,
+    var hits: List<Hit>,
     val total: Int,
     val totalHits: Int
 )

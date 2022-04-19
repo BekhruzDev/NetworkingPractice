@@ -1,12 +1,15 @@
 package com.bekhruz.networkingpractice.network
 
+import com.bekhruz.networkingpractice.Constants.BASE_URL
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 
-private const val BASE_URL = "https://pixabay.com/api/"
+//full url: https://pixabay.com/api/?key=26791382-401008e990a0a45ca9b7993ec&q=nature&image_type=photo&pretty=true
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -17,9 +20,13 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface PhotoApiService{
-    //TODO: USE @QUERIES
-@GET("?key=26791382-401008e990a0a45ca9b7993ec&q=nature&image_type=photo&pretty=true")
-suspend fun getPhotos():Images
+@GET("/api/")
+suspend fun getPhotos(
+        @Query("key") apiKey: String,
+        @Query("q") searchInput: String,
+        @Query("image_type") imageType: String,
+        @Query("pretty") pretty: Boolean
+): Response<Images>
 }
 
 object PhotosApi{

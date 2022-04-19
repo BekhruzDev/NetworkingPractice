@@ -19,14 +19,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        recyclerView = binding.photosRecyclerview
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
-        recyclerView = binding.photosRecyclerview
         recyclerView.layoutManager = GridLayoutManager(this, 2)
         val adapter = PhotoGridAdapter()
         recyclerView.adapter = adapter
         recyclerView.setHasFixedSize(true)
-        Log.d("Response", viewModel.photos.value?.total.toString())
-
+        Log.d("Response", viewModel.photos.value?.totalHits.toString())
     }
 }
